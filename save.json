@@ -1,0 +1,41 @@
+{
+    "name": "SrZea",
+    "hp": 120,
+    "base_max_hp": 120,
+    "base_attack": 15,
+    "equipment": {
+        "weapon": {
+            "name": "Espada b\u00e1sica",
+            "type": "weapon",
+            "attack": 5
+        },
+        "armor": null
+    },
+    "level": 2,
+    "xp": 0,
+    "xp_to_next": 75,
+    "gold": 7,
+    "inventory": [
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20
+        },
+        {
+            "name": "Espada b\u00e1sica",
+            "type": "weapon",
+            "attack": 5
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20,
+            "rarity": "common"
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20
+        }
+    ]
+}

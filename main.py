@@ -1,9 +1,12 @@
 from random import choice
+
+from utils.banner import show_banner
 from utils.save_system import save_game, load_game
 from core.player import Player
 from core.combat import start_combat
 from core.shop import open_shop
 from core.equipment import equip_item
+from utils.banner import show_banner
 from utils.helpers import show_inventory,RARITIES,get_random_rarity, generate_item
 import random
 import copy
@@ -39,7 +42,9 @@ def find_loot(player):
 
 #============ M A I N ===============================#
 def main():
-    print("Bienvenido a RpGG, una aventura en texto 🔥⚔️")
+    #print("Bienvenido a RpGG, una aventura en texto 🔥⚔️")
+
+    show_banner()
 
     loaded_player = load_game(Player)
 
@@ -64,9 +69,8 @@ def main():
         print("\n1. Explorar. 🌳")
         print("2. Tienda. 🏪")
         print("3. Inventario. 🏪")
-        print("4. Equipar. 💪")
-        print("5. Guardar Partida. 💾")
-        print("6. Salir del juego. ❌")
+        print("4. Guardar Partida. 💾")
+        print("0. Salir del juego. ❌")
 
 
         choice = input("Elige una opcion: ")
@@ -88,12 +92,9 @@ def main():
             show_inventory(player)
 
         elif choice == "4":
-            equip_item(player)
-
-        elif choice == "5":
             save_game(player)
 
-        elif choice == "6":
+        elif choice == "0":
             print("\nGracias por jugar.")
             print("=========================================")
             break

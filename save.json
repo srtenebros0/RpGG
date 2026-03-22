@@ -1,6 +1,6 @@
 {
     "name": "SrZea",
-    "hp": 130,
+    "hp": 111,
     "base_max_hp": 140,
     "base_attack": 20,
     "equipment": {
@@ -13,20 +13,14 @@
         "armor": null
     },
     "level": 3,
-    "xp": 0,
+    "xp": 26,
     "xp_to_next": 100,
-    "gold": 85,
+    "gold": 106,
     "inventory": [
         {
             "name": "Espada b\u00e1sica",
             "type": "weapon",
             "attack": 5
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20,
-            "rarity": "rare"
         },
         {
             "name": "Poci\u00f3n",
@@ -50,6 +44,12 @@
             "name": "Espada Oscura",
             "type": "weapon",
             "attack": 9,
+            "rarity": "rare"
+        },
+        {
+            "name": "Espada Maldita",
+            "type": "weapon",
+            "attack": 6,
             "rarity": "rare"
         }
     ]

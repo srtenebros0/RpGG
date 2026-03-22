@@ -1,6 +1,6 @@
 import random
 from core.enemy import Enemy
-from utils.helpers import use_potion
+from utils.helpers import use_potion,generate_item,drop_loot
 
 def start_combat(player):
     enemy = Enemy()
@@ -58,10 +58,13 @@ def start_combat(player):
     if player.hp <= 0:
         print(f"\n💀 Has sido papeado por {enemy.name}")
         player.hp = int(player.get_max_hp())
+
     elif enemy.hp <= 0:
         print(f"\n🔥 Derrotaste al {enemy.name}!")
         player.gain_xp(enemy.xp_reward)
         player.gold += enemy.gold_reward
         print(f"💰 Ganaste {enemy.gold_reward} monedas de oro.")
+        drop_loot(player, enemy)
+
     else:
         print("\n🏃 Escapaste con vida.")

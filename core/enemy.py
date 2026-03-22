@@ -12,6 +12,10 @@ class Enemy:
             self.attack = random.randint(4,8)
             self.xp_reward = random.randint(30, 50)
             self.gold_reward = random.randint(10,30)
+            self.loot_table = [
+                {"name": "Armadura", "type": "armor", "hp": 15},
+                {"name": "Poción", "type": "consumable", "heal": 20}
+            ]
 
         elif enemy_type == "AGRESIVO":
             self.name = "Druida Oscuro"
@@ -19,6 +23,10 @@ class Enemy:
             self.attack = random.randint(10, 18)
             self.xp_reward = random.randint(25, 45)
             self.gold_reward = random.randint(10, 30)
+            self.loot_table = [
+                {"name": "Espada", "type": "weapon", "attack": 5},
+                {"name": "Poción", "type": "consumable", "heal": 20}
+            ]
 
         else:
             self.name = "Valkiria"
@@ -26,6 +34,11 @@ class Enemy:
             self.attack = random.randint(6,12)
             self.xp_reward = random.randint(20,40)
             self.gold_reward = random.randint(10, 30)
+            self.loot_table = [
+                {"name": "Espada", "type": "weapon", "attack": 5},
+                {"name": "Armadura", "type": "armor", "hp": 15},
+                {"name": "Poción", "type": "consumable", "heal": 20}
+            ]
 
         self.type = enemy_type
 

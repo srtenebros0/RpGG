@@ -16,6 +16,19 @@ def use_potion(player):
     print("\n❌ No tienes pociones.")
     return False
 
+def drop_loot(player, enemy):
+    #Elegir item base del enemigo
+
+    base_item = random.choice(enemy.loot_table)
+
+    #Convertirlo en item dinámico (rareza + stats)
+    item = generate_item(base_item)
+
+    #Agregar al inventario
+    player.inventory.append(item)
+
+    print(f"\n🎁 El enemigo dejó: {item['name']} ({item['rarity']})")
+
 def show_inventory(player):
     from utils.helpers import RARITIES
 

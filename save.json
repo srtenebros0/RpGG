@@ -18,11 +18,6 @@
     "gold": 106,
     "inventory": [
         {
-            "name": "Espada b\u00e1sica",
-            "type": "weapon",
-            "attack": 5
-        },
-        {
             "name": "Poci\u00f3n",
             "type": "consumable",
             "heal": 20,
@@ -44,12 +39,6 @@
             "name": "Espada Oscura",
             "type": "weapon",
             "attack": 9,
-            "rarity": "rare"
-        },
-        {
-            "name": "Espada Maldita",
-            "type": "weapon",
-            "attack": 6,
             "rarity": "rare"
         }
     ]

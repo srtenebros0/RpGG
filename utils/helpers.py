@@ -38,64 +38,147 @@ def show_inventory(player):
         print("Vacío.")
         return
 
-    # 🔥 Agrupar items (stack)
-    grouped = {}
+    while True:
+        # =========================
+        # AGRUPAR ITEMS (STACK)
+        # =========================
+        grouped = {}
 
-    for item in player.inventory:
-        key = (
-            item["name"],
-            item["type"],
-            item.get("rarity", "common")
-        )
+        for item in player.inventory:
+            key = (
+                item["name"],
+                item["type"],
+                item.get("rarity", "common")
+            )
 
-        if key not in grouped:
-            grouped[key] = {
-                "item": item,
-                "count": 1
-            }
+            if key not in grouped:
+                grouped[key] = {
+                    "item": item,
+                    "count": 1
+                }
+            else:
+                grouped[key]["count"] += 1
+
+        grouped_list = list(grouped.values())
+
+        # =========================
+        # MOSTRAR INVENTARIO
+        # =========================
+        print("\n------------------")
+
+        for i, data in enumerate(grouped_list):
+            item = data["item"]
+            count = data["count"]
+
+            rarity = item.get("rarity", "common")
+            rarity_data = RARITIES[rarity]
+
+            text = f"{i+1}. {rarity_data.get('icon','')} [{rarity_data['label']}] {item['name']}"
+
+            if item["type"] == "weapon":
+                text += f" (+{item.get('attack', 0)} ATK)"
+                if player.equipment["weapon"] == item:
+                    text += " ⚔️ (equipado)"
+
+            elif item["type"] == "armor":
+                text += f" (+{item.get('hp', 0)} HP)"
+                if player.equipment["armor"] == item:
+                    text += " 🛡️ (equipado)"
+
+            elif item["type"] == "consumable":
+                text += f" (cura {item.get('heal', 0)} HP)"
+
+            if count > 1:
+                text += f" x{count}"
+
+            print(text)
+
+        print("0. Salir")
+
+        # =========================
+        # SELECCIÓN
+        # =========================
+        choice = input("\nSelecciona un item: ")
+
+        if not choice.isdigit():
+            print("Opción inválida.")
+            continue
+
+        choice = int(choice)
+
+        if choice == 0:
+            break
+
+        if choice < 1 or choice > len(grouped_list):
+            print("Opción inválida.")
+            continue
+
+        selected_data = grouped_list[choice - 1]
+        item = selected_data["item"]
+
+        # =========================
+        # ACCIONES
+        # =========================
+        print(f"\nSeleccionaste: {item['name']}")
+        print("1. Equipar")
+        print("2. Usar")
+        print("3. Tirar")
+        print("4. Volver")
+
+        action = input("Elige acción: ")
+
+        # -------------------------
+        # EQUIPAR
+        # -------------------------
+        if action == "1":
+            if item["type"] == "weapon":
+                player.equipment["weapon"] = item
+                print(f"⚔️ Equipaste {item['name']}")
+
+            elif item["type"] == "armor":
+                player.equipment["armor"] = item
+                print(f"🛡️ Equipaste {item['name']}")
+
+            else:
+                print("No se puede equipar.")
+
+        # -------------------------
+        # USAR (POCIÓN)
+        # -------------------------
+        elif action == "2":
+            if item["type"] == "consumable":
+                for i, inv_item in enumerate(player.inventory):
+                    if inv_item == item:
+                        heal = inv_item.get("heal", 20)
+                        player.hp = min(player.get_max_hp(), player.hp + heal)
+
+                        print(f"🧪 Usaste {inv_item['name']} y recuperaste {heal} HP.")
+                        player.inventory.pop(i)
+                        break
+            else:
+                print("No se puede usar.")
+
+        # -------------------------
+        # TIRAR ITEM
+        # -------------------------
+        elif action == "3":
+            confirm = input(f"¿Tirar {item['name']}? (s/n): ")
+
+            if confirm.lower() == "s":
+                for i, inv_item in enumerate(player.inventory):
+                    if inv_item == item:
+                        player.inventory.pop(i)
+                        print(f"🗑️ Tiraste {item['name']}")
+                        break
+
+        # -------------------------
+        # VOLVER
+        # -------------------------
+        elif action == "4":
+            continue
+
         else:
-            grouped[key]["count"] += 1
-
-    # 🔽 Mostrar inventario agrupado
-    for i, data in enumerate(grouped.values()):
-        item = data["item"]
-        count = data["count"]
-
-        rarity = item.get("rarity", "common")
-        rarity_data = RARITIES[rarity]
-
-        text = f"{i+1}. {rarity_data.get('icon','')} [{rarity_data['label']}] {item['name']}"
-
-        # Stats
-        if item["type"] == "weapon":
-            text += f" (+{item.get('attack', 0)} ATK)"
-
-            if player.equipment["weapon"] == item:
-                text += " ⚔️ (equipado)"
-
-        elif item["type"] == "armor":
-            text += f" (+{item.get('hp', 0)} HP)"
-
-            if player.equipment["armor"] == item:
-                text += " 🛡️ (equipado)"
-
-        elif item["type"] == "consumable":
-            text += f" (cura {item.get('heal', 0)} HP)"
-
-        # 🔥 Mostrar cantidad
-        if count > 1:
-            text += f" x{count}"
-
-        print(text)
-
-    # Mostrar equipo actual
-    print("\n--- EQUIPO ACTUAL ---")
-
-    weapon = player.equipment["weapon"]
-    armor = player.equipment["armor"]
-
-    print(f"⚔️ Arma: {weapon['name'] if weapon else 'Ninguna'}")
-    print(f"🛡️ Armadura: {armor['name'] if armor else 'Ninguna'}")
+            print("Opción inválida.")
 
 RARITIES = {
     "common": {

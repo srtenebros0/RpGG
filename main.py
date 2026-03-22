@@ -4,7 +4,7 @@ from core.player import Player
 from core.combat import start_combat
 from core.shop import open_shop
 from core.equipment import equip_item
-from utils.helpers import show_inventory,RARITIES,get_random_rarity
+from utils.helpers import show_inventory,RARITIES,get_random_rarity, generate_item
 import random
 import copy
 
@@ -17,7 +17,8 @@ def find_loot(player):
         {"name": "Poción", "type": "consumable", "heal": 20}
     ]
 
-    item = copy.deepcopy(random.choice(base_items))
+    base_items = random.choice(base_items)
+    item = generate_item(base_items)
 
     rarity = get_random_rarity()
 
@@ -33,7 +34,7 @@ def find_loot(player):
 
     player.inventory.append(item)
 
-    print(f"\n🎁 Encontraste: {RARITIES[rarity]['label']} {item['name']}")
+    print(f"\n🎁 Encontraste: {RARITIES[item['rarity']]['label']} {item['name']}")
 #============ F I N | L O O T ======================#
 
 #============ M A I N ===============================#

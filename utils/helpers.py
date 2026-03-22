@@ -17,20 +17,43 @@ def use_potion(player):
     return False
 
 def show_inventory(player):
+    from utils.helpers import RARITIES
+
     print("\n🎒 INVENTARIO")
 
     if not player.inventory:
         print("Vacío.")
         return
 
-    for i, item in enumerate(player.inventory):
+    # 🔥 Agrupar items (stack)
+    grouped = {}
+
+    for item in player.inventory:
+        key = (
+            item["name"],
+            item["type"],
+            item.get("rarity", "common")
+        )
+
+        if key not in grouped:
+            grouped[key] = {
+                "item": item,
+                "count": 1
+            }
+        else:
+            grouped[key]["count"] += 1
+
+    # 🔽 Mostrar inventario agrupado
+    for i, data in enumerate(grouped.values()):
+        item = data["item"]
+        count = data["count"]
+
         rarity = item.get("rarity", "common")
         rarity_data = RARITIES[rarity]
 
-        # Base del texto
-        text = f"{i+1}. {rarity_data.get('icon', '')} [{rarity_data['label']}] {item['name']}"
+        text = f"{i+1}. {rarity_data.get('icon','')} [{rarity_data['label']}] {item['name']}"
 
-        # Stats según tipo
+        # Stats
         if item["type"] == "weapon":
             text += f" (+{item.get('attack', 0)} ATK)"
 
@@ -46,9 +69,13 @@ def show_inventory(player):
         elif item["type"] == "consumable":
             text += f" (cura {item.get('heal', 0)} HP)"
 
+        # 🔥 Mostrar cantidad
+        if count > 1:
+            text += f" x{count}"
+
         print(text)
 
-    # 👇 info extra (muy útil)
+    # Mostrar equipo actual
     print("\n--- EQUIPO ACTUAL ---")
 
     weapon = player.equipment["weapon"]
@@ -84,7 +111,28 @@ def get_random_rarity():
 
 #========== G E N E R A D O R  D E  I T E M S ===========#
 
-WEAPON_PREFIXES = []
-ARMOR_PREFIXES = []
+WEAPON_PREFIXES = ["de Fuego","del Trueno","Oscura","Sagrada","Maldita"]
+ARMOR_PREFIXES = ["del Guardián","de Acero","Mística","Antigua","Maldita"]
+
+def generate_item(base_item):
+    item = base_item.copy()
+
+    # Elegir Rareza
+    rarity = get_random_rarity()
+    item["rarity"] = rarity
+    multiplier = RARITIES[rarity]["multiplier"]
+
+    # Modificar stats
+    if item["type"] == "weapon":
+        prefix = random.choice(WEAPON_PREFIXES)
+        item["name"] = f"{item['name']} {prefix}"
+        item["attack"] = int(item["attack"] + multiplier)
+
+    elif item["type"] == "armor":
+        prefix = random.choice(ARMOR_PREFIXES)
+        item["name"] = f"{item['name']} {prefix}"
+        item["hp"] = int(item["hp"] + multiplier)
+
+    return item
 
 #========== G E N E R A D O R  D E  I T E M S ===========#

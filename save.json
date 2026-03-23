@@ -1,8 +1,8 @@
 {
     "name": "SrZea",
-    "hp": 141,
-    "base_max_hp": 140,
-    "base_attack": 20,
+    "hp": 190,
+    "base_max_hp": 180,
+    "base_attack": 30,
     "equipment": {
         "weapon": {
             "name": "Espada de Fuego",
@@ -18,10 +18,10 @@
         }
     },
     "base_defense": 2,
-    "level": 3,
-    "xp": 41,
-    "xp_to_next": 100,
-    "gold": 20,
+    "level": 5,
+    "xp": 67,
+    "xp_to_next": 150,
+    "gold": 96,
     "inventory": [
         {
             "name": "Espada de Fuego",
@@ -38,23 +38,55 @@
         {
             "name": "Poci\u00f3n",
             "type": "consumable",
-            "heal": 20,
+            "heal": 20
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20
+        },
+        {
+            "name": "Espada Oscura",
+            "type": "weapon",
+            "attack": 9,
+            "rarity": "rare"
+        },
+        {
+            "name": "Espada de Fuego",
+            "type": "weapon",
+            "attack": 6,
             "rarity": "common"
         },
         {
             "name": "Poci\u00f3n",
             "type": "consumable",
-            "heal": 20
+            "heal": 20,
+            "rarity": "rare"
         },
         {
             "name": "Poci\u00f3n",
             "type": "consumable",
-            "heal": 20
+            "heal": 20,
+            "rarity": "rare"
         },
         {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20
+            "name": "Armadura M\u00edstica",
+            "type": "armor",
+            "hp": 16,
+            "rarity": "common",
+            "defense": 3
+        },
+        {
+            "name": "Armadura Antigua",
+            "type": "armor",
+            "hp": 16,
+            "rarity": "common",
+            "defense": 3
         }
     ]
 }

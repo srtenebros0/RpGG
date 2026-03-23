@@ -28,7 +28,7 @@ def drop_loot(player, enemy):
     player.inventory.append(item)
 
     print(f"\n🎁 El enemigo dejó: {item['name']} ({item['rarity']})")
-
+# ===================== I N V E N T A R I O==========================#
 def show_inventory(player):
     from utils.helpers import RARITIES
 
@@ -180,6 +180,8 @@ def show_inventory(player):
         else:
             print("Opción inválida.")
 
+# ===================== F I N  I N V E N T A R I O ==========================#
+
 RARITIES = {
     "common": {
         "multiplier": 1.0,
@@ -228,6 +230,7 @@ def generate_item(base_item):
         prefix = random.choice(ARMOR_PREFIXES)
         item["name"] = f"{item['name']} {prefix}"
         item["hp"] = int(item["hp"] + multiplier)
+        item["defense"] = int(3 * multiplier)
 
     return item
 

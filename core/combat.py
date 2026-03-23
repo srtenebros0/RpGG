@@ -14,6 +14,9 @@ def start_combat(player):
         print(f"XP: {player.xp}/{player.xp_to_next}")
         print(f"{enemy.name} HP: {enemy.hp}")
 
+        pociones = sum(1 for item in player.inventory if item["type"] == "consumable")
+        print(f"\n🧪 POCIONES: {pociones}")
+
         print("\n1 - Atacar. ⚔️")
         print("2 - Curarte. ❤️‍🩹")
         print("3 - Huir. 💨")
@@ -46,12 +49,21 @@ def start_combat(player):
 
         # Turno del enemigo
         if enemy.is_alive():
-            damage = random.randint(3, enemy.attack)
+            raw_damage = random.randint(3, enemy.attack)
+
             if random.random() < 0.15:
-                damage *= 2
+                raw_damage *= 2
                 print(f"\n⚠️ ¡El {enemy.name} hizo un golpe CRÍTICO!")
-            player.hp -= damage
-            print(f"El {enemy.name} te golpea por {damage} de daño 😈")
+
+            defense = player.get_defense()
+
+            final_damage = max(1, raw_damage - defense)
+
+            player.hp -= final_damage
+
+            print(f"\nEl {enemy.name} te golpea por {raw_damage} de daño 😈")
+            print(f"🛡️ Reduces {defense} de daño.")
+            print(f"💥 Recibes {final_damage} de daño.")
 
     # Resultado Final
 

@@ -240,3 +240,24 @@ def generate_item(base_item):
     return item
 
 #========== G E N E R A D O R  D E  I T E M S ===========#
+
+def apply_status_effects(entity):
+    if not entity.status_effects:
+        return
+
+    print("\n--- EFECTOS ACTIVOS ---")
+
+    for effect in entity.status_effects[:]:
+        if effect["type"] == "poison":
+            entity.hp -= effect["value"]
+            print(f"☠️ Veneno: pierdes {effect['value']} HP")
+
+        elif effect["type"] == "regen":
+            entity.hp += effect["value"]
+            print(f"💚 Regeneras {effect['value']} HP")
+
+        effect["turns"] -= 1
+
+        if effect["turns"] <= 0:
+            entity.status_effects.remove(effect)
+            print(f"✨ El efecto {effect['type']} terminó")

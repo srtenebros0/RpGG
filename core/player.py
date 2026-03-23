@@ -21,6 +21,7 @@ class Player:
         }
 
         self.base_defense = 2
+        self.status_effects = []
 
 #====================================================#
 

@@ -1,8 +1,8 @@
 {
     "name": "SrZea",
-    "hp": 252,
-    "base_max_hp": 220,
-    "base_attack": 40,
+    "hp": 272,
+    "base_max_hp": 240,
+    "base_attack": 45,
     "equipment": {
         "weapon": {
             "name": "Espada Oscura",
@@ -19,10 +19,10 @@
         }
     },
     "base_defense": 2,
-    "level": 7,
-    "xp": 25,
-    "xp_to_next": 200,
-    "gold": 285,
+    "level": 8,
+    "xp": 4,
+    "xp_to_next": 225,
+    "gold": 385,
     "inventory": [
         {
             "name": "Espada Oscura",
@@ -54,6 +54,18 @@
             "type": "consumable",
             "heal": 20,
             "rarity": "rare"
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20,
+            "rarity": "common"
+        },
+        {
+            "name": "Poci\u00f3n",
+            "type": "consumable",
+            "heal": 20,
+            "rarity": "common"
         }
     ]
 }

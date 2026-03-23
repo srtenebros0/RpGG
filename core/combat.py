@@ -1,6 +1,6 @@
 import random
 from core.enemy import Enemy
-from utils.helpers import use_potion,generate_item,drop_loot
+from utils.helpers import use_potion,generate_item,drop_loot,apply_status_effects
 
 #============= I A  E N E M Y ===========================
 def enemy_action(enemy):
@@ -26,11 +26,17 @@ def enemy_action(enemy):
 #=======================================================
 
 def start_combat(player):
-    enemy = Enemy()
+    enemy = Enemy(player.level)
 
     print(f"\n⚔️ Un {enemy.name} de tipo ({enemy.type}) aparece frente a ti!!")
 
     while player.is_alive() and enemy.is_alive():
+
+        # Aplicar efectos al jugador
+        apply_status_effects(player)
+
+        # Aplicar efectos al enemigo
+        apply_status_effects(enemy)
 
         print("\n--- ESTADO ---")
         print(f"{player.name} Nivel: {player.level} HP: {player.hp}/{player.get_max_hp()}")
@@ -55,6 +61,16 @@ def start_combat(player):
                 print("\n💥 ¡Golpe CRÍTICO!")
 
             enemy.hp -= damage
+
+            # Probabilidad de envenenar
+            if random.random() < 0.2:
+                enemy.status_effects.append({
+                    "type": "poison",
+                    "turns": 3,
+                    "value": 3
+                })
+                print("☠️ ¡Envenenaste al enemigo!")
+
             print(f"\nGolpeas al {enemy.name} por {damage} de daño. 🥵")
 
         elif choice == "2":

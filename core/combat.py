@@ -2,6 +2,29 @@ import random
 from core.enemy import Enemy
 from utils.helpers import use_potion,generate_item,drop_loot
 
+#============= I A  E N E M Y ===========================
+def enemy_action(enemy):
+    if enemy.behavior == "TANQUE":
+        if enemy.hp < 40 and random.random() < 0.6:
+            return "heal"
+        return "attack"
+
+    elif enemy.behavior == "AGRESIVO":
+        if random.random() < 0.8:
+            return "attack"
+        return "rage"
+
+    else:
+        roll = random.random()
+        if roll < 0.6:
+            return "attack"
+        elif roll < 0.8:
+            return "heal"
+        else:
+            return "rage"
+
+#=======================================================
+
 def start_combat(player):
     enemy = Enemy()
 
@@ -49,21 +72,43 @@ def start_combat(player):
 
         # Turno del enemigo
         if enemy.is_alive():
-            raw_damage = random.randint(3, enemy.attack)
 
-            if random.random() < 0.15:
-                raw_damage *= 2
-                print(f"\n⚠️ ¡El {enemy.name} hizo un golpe CRÍTICO!")
+            action = enemy_action(enemy)
 
-            defense = player.get_defense()
+            # -------------------------
+            # ATAQUE NORMAL
+            # -------------------------
+            if action == "attack":
+                raw_damage = random.randint(3, enemy.attack)
 
-            final_damage = max(1, raw_damage - defense)
+                if random.random() < 0.15:
+                    raw_damage *= 2
+                    print(f"\n⚠️ ¡El {enemy.name} hizo un golpe CRÍTICO!")
 
-            player.hp -= final_damage
+                defense = player.get_defense()
+                final_damage = max(1, raw_damage - defense)
 
-            print(f"\nEl {enemy.name} te golpea por {raw_damage} de daño 😈")
-            print(f"🛡️ Reduces {defense} de daño.")
-            print(f"💥 Recibes {final_damage} de daño.")
+                player.hp -= final_damage
+
+                print(f"\nEl {enemy.name} te ataca por {raw_damage} de daño 😈")
+                print(f"🛡️ Reduces {defense} de daño.")
+                print(f"💥 Recibes {final_damage} de daño.")
+
+            # -------------------------
+            # CURACIÓN
+            # -------------------------
+            elif action == "heal":
+                heal = random.randint(10, 20)
+                enemy.hp = min(enemy.max_hp, enemy.hp + heal)
+
+                print(f"\n🧪 El {enemy.name} se cura {heal} HP!")
+
+            # -------------------------
+            # MODO RABIA
+            # -------------------------
+            elif action == "rage":
+                enemy.attack += 3
+                print(f"\n😈 El {enemy.name} entra en FURIA! (+3 ATK)")
 
     # Resultado Final
 

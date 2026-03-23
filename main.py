@@ -63,7 +63,7 @@ def main():
             #name = input("¿Como sellama tu personaje?")
             #player = Player(name)
     else:
-        name = input("¿Como se llama tu personaje?")
+        name = input("¿Como se llama tu personaje? : ")
         player = Player(name)
 
     while True:

@@ -36,7 +36,7 @@ def load_game(Player):
         player.base_max_hp = data["base_max_hp"]
         player.base_attack = data["base_attack"]
         player.equipment = data["equipment"]
-        player.base_defense = data["base_defense"]
+        player.base_defense = data.get("base_defense",2)
         player.level = data["level"]
         player.xp = data["xp"]
         player.xp_to_next = data["xp_to_next"]

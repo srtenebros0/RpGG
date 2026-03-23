@@ -17,6 +17,7 @@
             "rarity": "rare"
         }
     },
+    "base_defense": 2,
     "level": 3,
     "xp": 5,
     "xp_to_next": 100,

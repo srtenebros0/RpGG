@@ -12,6 +12,7 @@ def save_game(player):
         "base_max_hp": player.base_max_hp,
         "base_attack": player.base_attack,
         "equipment": player.equipment,
+        "base_defense": player.base_defense,
         "level": player.level,
         "xp": player.xp,
         "xp_to_next": player.xp_to_next,
@@ -35,6 +36,7 @@ def load_game(Player):
         player.base_max_hp = data["base_max_hp"]
         player.base_attack = data["base_attack"]
         player.equipment = data["equipment"]
+        player.base_defense = data["base_defense"]
         player.level = data["level"]
         player.xp = data["xp"]
         player.xp_to_next = data["xp_to_next"]

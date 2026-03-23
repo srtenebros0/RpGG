@@ -63,12 +63,13 @@ def main():
     while True:
         print("=========================================")
         print("\n--- EXPLORACIÓN ---")
+        print(f"{player.name}")
         print(f"Nivel: {player.level} | VIDA: {player.hp}/{player.get_max_hp()} | XP: {player.xp}/{player.xp_to_next}")
         print(f"Oro: {player.gold}")
 
         print("\n1. Explorar. 🌳")
         print("2. Tienda. 🏪")
-        print("3. Inventario. 🏪")
+        print("3. Inventario. 🎒")
         print("4. Guardar Partida. 💾")
         print("0. Salir del juego. ❌")
 

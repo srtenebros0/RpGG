@@ -9,7 +9,7 @@ class Player:
         self.xp = 0
         self.xp_to_next = 50
 
-        self.gold = 0
+        self.gold = 15
         self.inventory = []
 
         self.base_attack = 10
@@ -56,3 +56,4 @@ class Player:
         print(f"\n⭐ Subiste de nivel!!")
         print(f"\nAhora eres nivel {self.level}!")
         print("Tus stats han mejorado.")
+        print(f"ATAQUE: {self.base_attack} | VIDA: {self.base_max_hp}")

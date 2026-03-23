@@ -1,8 +1,8 @@
 {
     "name": "SrZea",
-    "hp": 68,
-    "base_max_hp": 100,
-    "base_attack": 10,
+    "hp": 136,
+    "base_max_hp": 120,
+    "base_attack": 15,
     "equipment": {
         "weapon": {
             "name": "Espada de Fuego",
@@ -10,17 +10,28 @@
             "attack": 6,
             "rarity": "common"
         },
-        "armor": null
+        "armor": {
+            "name": "Armadura M\u00edstica",
+            "type": "armor",
+            "hp": 16,
+            "rarity": "common"
+        }
     },
-    "level": 1,
-    "xp": 40,
-    "xp_to_next": 50,
-    "gold": 18,
+    "level": 2,
+    "xp": 0,
+    "xp_to_next": 75,
+    "gold": 48,
     "inventory": [
         {
             "name": "Espada de Fuego",
             "type": "weapon",
             "attack": 6,
+            "rarity": "common"
+        },
+        {
+            "name": "Armadura M\u00edstica",
+            "type": "armor",
+            "hp": 16,
             "rarity": "common"
         },
         {

@@ -1,6 +1,9 @@
 import json
+import os
 
-SAVE_FILE = "save.json"
+#SAVE_FILE = "save.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SAVE_FILE = os.path.join(BASE_DIR, "..", "save.json")
 
 def save_game(player):
     data= {
@@ -16,14 +19,15 @@ def save_game(player):
         "inventory": player.inventory
     }
 
-    with open(SAVE_FILE, "w") as f:
+    with open(SAVE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
+        print(f"Guardando en: {SAVE_FILE}")
         print("\n💾 PARTIDA GUARDADA...")
 
 def load_game(Player):
     try:
-        with open(SAVE_FILE, "r") as f:
+        with open(SAVE_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         player = Player(data["name"])

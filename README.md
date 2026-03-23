@@ -5,6 +5,8 @@
 ██║  ██║██║     ╚██████╔╝╚██████╔╝
 ╚═╝  ╚═╝╚═╝      ╚═════╝  ╚═════╝ 
 
+🧙‍♂️ RpGG
+
 🧙‍♂️ RPG de Texto en Python
 
 Un juego RPG basado en consola desarrollado en Python, con arquitectura modular y sistemas escalables como combate, inteligencia artificial de enemigos, estados y efectos.
@@ -55,7 +57,7 @@ Cada efecto tiene:
 ⚙️ Instalación
 	1.	Clona el repositorio:
 
-git clone https://github.com/tu-usuario/rpg-texto.git
+git clone https://github.com/srtenebros0/RpGG.git
 cd rpg-texto
 
 	2.	Ejecuta el juego:

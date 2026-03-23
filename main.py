@@ -1,5 +1,4 @@
 from random import choice
-
 from utils.banner import show_banner
 from utils.save_system import save_game, load_game
 from core.player import Player
@@ -40,6 +39,13 @@ def find_loot(player):
     print(f"\n🎁 Encontraste: {RARITIES[item['rarity']]['label']} {item['name']}")
 #============ F I N | L O O T ======================#
 
+#============ S T A T S ===============================#
+def show_stats(self):
+    print(f"\n👤 {self.name} | 🪢 NIVEL: {self.level} | 🌟 XP: {self.xp}/{self.xp_to_next}")
+    print(f"♥️ HP: {self.hp}/{self.get_max_hp()}")
+    print(f"⚔️ FUERZA DE ATAQUE: {self.get_attack()} | 🛡️ DEFENSA: {self.get_defense()}")
+#============ C I E R R E ===============================#
+
 #============ M A I N ===============================#
 def main():
     #print("Bienvenido a RpGG, una aventura en texto 🔥⚔️")
@@ -71,6 +77,7 @@ def main():
         print("2. Tienda. 🏪")
         print("3. Inventario. 🎒")
         print("4. Guardar Partida. 💾")
+        print("5. Stats. 📄")
         print("0. Salir del juego. ❌")
 
 
@@ -94,6 +101,9 @@ def main():
 
         elif choice == "4":
             save_game(player)
+
+        elif choice == "5":
+            show_stats(player)
 
         elif choice == "0":
             print("\nGracias por jugar.")

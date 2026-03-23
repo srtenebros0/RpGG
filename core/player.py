@@ -23,6 +23,7 @@ class Player:
         self.base_defense = 2
 
 #====================================================#
+
 #==================== A T A Q U E  P L A Y E R ======================#
     def get_attack(self):
         bonus = 0

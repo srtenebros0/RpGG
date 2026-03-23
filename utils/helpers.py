@@ -3,7 +3,12 @@ import random
 def use_potion(player):
     for i, item in enumerate(player.inventory):
         if item["type"] == "consumable":
-            heal = item.get("heal", 20)
+
+            if item["type"] == "consumable" and item["rarity"] == "common":
+
+                heal = item.get("heal", 20)
+            else:
+                heal = item.get(23, 35)
 
             player.hp = min(player.get_max_hp(), player.hp + heal)
 
@@ -152,7 +157,7 @@ def show_inventory(player):
                         heal = inv_item.get("heal", 20)
                         player.hp = min(player.get_max_hp(), player.hp + heal)
 
-                        print(f"🧪 Usaste {inv_item['name']} y recuperaste {heal} HP.")
+                        print(f"🧪 Usaste {inv_item['name']} {inv_item['rarity']} y recuperaste {heal} HP.")
                         player.inventory.pop(i)
                         break
             else:

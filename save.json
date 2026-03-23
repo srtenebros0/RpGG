@@ -1,55 +1,29 @@
 {
     "name": "SrZea",
-    "hp": 190,
-    "base_max_hp": 180,
-    "base_attack": 30,
+    "hp": 228,
+    "base_max_hp": 200,
+    "base_attack": 35,
     "equipment": {
         "weapon": {
-            "name": "Espada de Fuego",
+            "name": "Espada Oscura",
             "type": "weapon",
             "attack": 9,
             "rarity": "rare"
         },
         "armor": {
-            "name": "Armadura de Acero",
+            "name": "Armadura M\u00edstica",
             "type": "armor",
-            "hp": 16,
-            "rarity": "rare"
+            "hp": 32,
+            "rarity": "epic",
+            "defense": 3
         }
     },
     "base_defense": 2,
-    "level": 5,
+    "level": 6,
     "xp": 67,
-    "xp_to_next": 150,
-    "gold": 96,
+    "xp_to_next": 175,
+    "gold": 198,
     "inventory": [
-        {
-            "name": "Espada de Fuego",
-            "type": "weapon",
-            "attack": 9,
-            "rarity": "rare"
-        },
-        {
-            "name": "Armadura de Acero",
-            "type": "armor",
-            "hp": 16,
-            "rarity": "rare"
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20
-        },
         {
             "name": "Espada Oscura",
             "type": "weapon",
@@ -57,35 +31,10 @@
             "rarity": "rare"
         },
         {
-            "name": "Espada de Fuego",
-            "type": "weapon",
-            "attack": 6,
-            "rarity": "common"
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20,
-            "rarity": "rare"
-        },
-        {
-            "name": "Poci\u00f3n",
-            "type": "consumable",
-            "heal": 20,
-            "rarity": "rare"
-        },
-        {
             "name": "Armadura M\u00edstica",
             "type": "armor",
-            "hp": 16,
-            "rarity": "common",
-            "defense": 3
-        },
-        {
-            "name": "Armadura Antigua",
-            "type": "armor",
-            "hp": 16,
-            "rarity": "common",
+            "hp": 32,
+            "rarity": "epic",
             "defense": 3
         }
     ]
